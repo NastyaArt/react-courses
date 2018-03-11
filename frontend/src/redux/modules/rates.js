@@ -1,6 +1,6 @@
-import {handleActions, createAction} from 'redux-actions';
-import {updateApiFetching} from './api';
-import {CurrencyRatesApi} from '../../api/CurrencyRatesApi'
+import { handleActions, createAction } from 'redux-actions';
+import { updateApiFetching } from './api';
+import { CurrencyRatesApi } from '../../api/CurrencyRatesApi'
 import Rx from 'rxjs/Rx';
 
 //- Actions
@@ -46,12 +46,12 @@ export const ratesEpic = action$ => {
 //- Reducers
 export default handleActions({
     FETCH_CURRENCY_RATES: (state, action) => {
-        return {...state, ticks: null, error: null};  // if we will comment it in, we will see chart during refreshing rates (also shows that we always go through reducer (even with epics))
+        return { ...state, ticks: null, error: null };  // if we will comment it in, we will see chart during refreshing rates (also shows that we always go through reducer (even with epics))
     },
     FETCH_CURRENCY_RATES_FAILED: (state, action) => {
-        return {...state, error: action.payload, ticks: null};
+        return { ...state, error: action.payload, ticks: null };
     },
     FETCH_CURRENCY_RATES_SUCCESS: (state, action) => {
-        return {...state, ticks: action.payload, error: null}; // need to set error to null in case we get success result after fails
+        return { ...state, ticks: action.payload, error: null }; // need to set error to null in case we get success result after fails
     },
 }, initialState);

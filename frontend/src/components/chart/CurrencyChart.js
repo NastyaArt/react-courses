@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import './CurrencyChart.css';
 
 class CurrencyChart extends Component {
@@ -21,7 +21,7 @@ class CurrencyChart extends Component {
         };
         return (
             <div className='currency-chart'>
-                <Line data={data}/>
+                <Line data={data} />
             </div>
         );
     }

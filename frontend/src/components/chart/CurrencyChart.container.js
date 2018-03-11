@@ -1,9 +1,16 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import CurrencyChart from './CurrencyChart';
-import {fetchCurrencyRates} from '../../redux/modules/rates';
+import { fetchCurrencyRates } from '../../redux/modules/rates';
+
+let rangeDates = {}
 
 const mapStateToProps = state => {
     let currency = state.filter.selectedCurrency;
+    rangeDates = {
+        startDate: state.filter.startDate,
+        endDate: state.filter.endDate,
+        currencySymbol: currency
+    }
     if (state.rates.ticks) {
         let dates = [];
         let rates = [];
@@ -33,7 +40,8 @@ const mergeProps = (stateProps, dispatchProps) => {
     return {
         ...stateProps,
         onLoad: () => {
-            dispatchProps.dispatch(fetchCurrencyRates(stateProps.currency))
+            console.log("lalala", rangeDates);
+            dispatchProps.dispatch(fetchCurrencyRates(rangeDates))
         }
     };
 };
