@@ -40,7 +40,6 @@ const mergeProps = (stateProps, dispatchProps) => {
     return {
         ...stateProps,
         onLoad: () => {
-            console.log("lalala", rangeDates);
             dispatchProps.dispatch(fetchCurrencyRates(rangeDates))
         }
     };

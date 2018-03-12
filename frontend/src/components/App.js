@@ -5,6 +5,7 @@ import CurrencyChart from './chart/CurrencyChart.container';
 import CurrencyDropUp from './footer/dropup/CurrencyDropUp.container';
 import ExportButton from './footer/export/ExportButton.container';
 import RangeDatePicker from './range_date_picker/RangeDatePicker.container';
+import Tabs from './tabs/Tabs.container';
 
 import spinner from './spinner.svg';
 import './App.css';
@@ -19,6 +20,7 @@ class App extends Component {
                 </header>
                 <nav>
                     { /* Buttons to switch between chart and table views */}
+                    <Tabs />
                 </nav>
                 <article>
                     {this.renderArticle()}

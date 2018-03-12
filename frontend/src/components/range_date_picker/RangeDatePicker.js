@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './RangeDatePicker.css';
 import { DateRangePicker } from 'react-dates'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css'
+import './RangeDatePicker.css';
 import moment from 'moment';
 
 class RangeDatePicker extends Component {

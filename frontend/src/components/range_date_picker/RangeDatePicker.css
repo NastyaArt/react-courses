@@ -1,3 +1,75 @@
 .date-range-picker *{
 	box-sizing: border-box;
 }
+
+.CalendarDay__selected_start{
+	background: #751430;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarDay__selected_start:hover{
+	background: #4C061A;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarDay__selected_start:active{
+	background: #BA4667;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarMonth_table .CalendarDay__selected_end{
+	background: #751430;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarMonth_table .CalendarDay__selected_end:hover{
+	background: #4C061A;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarMonth_table .CalendarDay__selected_end:active{
+	background: #BA4667;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarDay__selected_span{
+	background: #BA657D;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarDay__selected_span:hover{
+	background: #BA4667;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.CalendarDay__selected_span:active{
+	background: #DB96A9;
+	color: #FFFFFF;
+	border: 1px solid #751430;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight:hover{
+	border-right: 33px solid #BA4667;
+	color: #FFFFFF;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight:active{
+	border-right: 33px solid #DB96A9;
+	color: #FFFFFF;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight{
+	border-right: 33px solid #751430;
+}
+
+.DateInput_input__focused{
+	border-bottom: 2px solid #751430;
+}
