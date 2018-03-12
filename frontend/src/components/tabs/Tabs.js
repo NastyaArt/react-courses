@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Tabs.css';
 
 class Tabs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentTab: props.currentTab
+            currentTab: props.currentTab,
+            tabsInfo: props.tabsInfo
         };
         this.onTabChange = this.onTabChange.bind(this);
     }
 
     onTabChange(e) {
-        console.log(e, e.target.id);
-
         this.props.onTabChange(e.target.id);
     }
 
@@ -23,8 +23,15 @@ class Tabs extends Component {
     }
 
     getTabs() {
-        var ids = ['Graph', 'Table'];
-        return ids.map(id => <div key={id} className={`tab ${id === this.state.currentTab && "active"}`} id={id} onClick={this.onTabChange} >{id}</div>)
+        return this.state.tabsInfo.map(tab =>
+            <div key={tab.id}
+                className={`tab ${tab.id === this.state.currentTab ? "active" : ""}`}
+                id={tab.id}
+                onClick={this.onTabChange}
+            >
+                {tab.name}
+            </div>
+        )
     }
 
     render() {
@@ -35,6 +42,14 @@ class Tabs extends Component {
         );
     }
 
+};
+
+Tabs.propTypes = {
+    currentTab: PropTypes.string.isRequired,
+    tabsInfo: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    })).isRequired,
 };
 
 export default Tabs;

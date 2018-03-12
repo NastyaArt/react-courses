@@ -5,7 +5,7 @@ export const changeTab = createAction('TAB_CHANGE');
 
 //- State
 const initialState = {
-    currentTab: 'Graph'
+    currentTab: 'chart'
 };
 
 //- Reducers

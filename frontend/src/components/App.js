@@ -55,7 +55,12 @@ class App extends Component {
             console.log(this.props.error);
             return <div className="error">{this.props.error}</div>;
         } else {
-            return <CurrencyChart />;
+            if (this.props.currentTab === "table") {
+                return <div>TABLE</div>
+            }
+            else {
+                return <CurrencyChart />;
+            }
         }
     }
 }

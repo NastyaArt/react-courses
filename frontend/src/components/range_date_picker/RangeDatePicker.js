@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { DateRangePicker } from 'react-dates'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css'
@@ -55,6 +56,11 @@ class RangeDatePicker extends Component {
         );
     }
 
+};
+
+RangeDatePicker.propTypes = {
+    startDate: PropTypes.any.isRequired,
+    endDate: PropTypes.any.isRequired
 };
 
 export default RangeDatePicker;

@@ -3,9 +3,12 @@ import { changeTab } from '../../redux/modules/tabs_switcher';
 import Tabs from './Tabs';
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
-        currentTab: state.tabs_switcher.currentTab
+        currentTab: state.tabs_switcher.currentTab,
+        tabsInfo: [
+            { id: "chart", name: "Chart" },
+            { id: "table", name: "Table" }
+        ]
     };
 };
 
