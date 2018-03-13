@@ -1,0 +1,15 @@
+.table{
+	margin: 0;
+	padding: 1px;
+	width: 80%;
+	height: 100%;
+}
+
+.table *{
+	box-sizing: border-box;
+}
+
+.react-grid-HeaderCell{
+	background: #FFE3EB;
+}
+

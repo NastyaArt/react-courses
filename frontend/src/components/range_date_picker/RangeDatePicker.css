@@ -2,19 +2,19 @@
 	box-sizing: border-box;
 }
 
-.CalendarDay__selected_start{
+.CalendarMonth_table .CalendarDay__selected_start{
 	background: #751430;
 	color: #FFFFFF;
 	border: 1px solid #751430;
 }
 
-.CalendarDay__selected_start:hover{
+.CalendarMonth_table .CalendarDay__selected_start:hover{
 	background: #4C061A;
 	color: #FFFFFF;
 	border: 1px solid #751430;
 }
 
-.CalendarDay__selected_start:active{
+.CalendarMonth_table .CalendarDay__selected_start:active{
 	background: #BA4667;
 	color: #FFFFFF;
 	border: 1px solid #751430;

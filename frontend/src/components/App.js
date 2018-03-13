@@ -6,6 +6,7 @@ import CurrencyDropUp from './footer/dropup/CurrencyDropUp.container';
 import ExportButton from './footer/export/ExportButton.container';
 import RangeDatePicker from './range_date_picker/RangeDatePicker.container';
 import Tabs from './tabs/Tabs.container';
+import Table from './table/Table.container';
 
 import spinner from './spinner.svg';
 import './App.css';
@@ -56,7 +57,7 @@ class App extends Component {
             return <div className="error">{this.props.error}</div>;
         } else {
             if (this.props.currentTab === "table") {
-                return <div>TABLE</div>
+                return <Table />
             }
             else {
                 return <CurrencyChart />;
