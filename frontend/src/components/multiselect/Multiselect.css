@@ -1,0 +1,69 @@
+.multiselect{
+	cursor: pointer;
+	position: relative;
+	flex: 0 0 40px;
+	padding-top: 10px;
+	height: 30px;
+	align-items: flex-start;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.multiselect:focus{
+	outline: none;
+} 
+
+.multiselect .settings{
+	display: flex;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+}
+
+.multiselect:focus .settings > svg, .multiselect.open .settings > svg{
+	fill: orange;
+}
+
+.multiselect ul.options{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	right: 0;
+	width: 100px;
+	z-index: 1;
+}
+
+.multiselect ul.options > li{
+	list-style: none;
+	background-color: white;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+}
+
+.multiselect ul.options li > label{
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	align-items: center;
+	position: relative;
+	padding: 5px 14px;
+	box-sizing: border-box;
+}
+
+.multiselect ul.options > li:first-child{
+	border-top: 1px solid #E0E0E0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.multiselect ul.options > li:last-child{
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.multiselect ul.options > li:hover{
+	background-color: #F0F0F0;
+}
+

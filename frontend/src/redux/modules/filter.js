@@ -5,11 +5,13 @@ import moment from 'moment';
 //- Actions
 export const selectCurrency = createAction('CURRENCY_SELECT');
 export const changeDate = createAction('DATE_CHANGE');
+export const checkCurrency = createAction('CHECK_CURRENCY');
 
 //- State
 const initialState = {
     selectedCurrency: 'USD',
-    startDate: moment().subtract(6, "days"),
+    selectedTableCurrencies: ['USD', 'EUR'],
+    startDate: moment().subtract(6, 'days'),
     endDate: moment()
 };
 
@@ -33,5 +35,10 @@ export default handleActions({
     },
     DATE_CHANGE: (state, action) => {
         return { ...state, startDate: action.payload.startDate, endDate: action.payload.endDate };
+    },
+    CHECK_CURRENCY: (state, action) => {
+        let currs = state.selectedTableCurrencies;
+        currs.indexOf(action.payload) === -1 ? currs.push(action.payload) : currs = currs.filter(x => x !== action.payload);
+        return { ...state, selectedTableCurrencies: currs };
     }
 }, initialState);

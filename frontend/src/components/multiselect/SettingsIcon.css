@@ -1,0 +1,8 @@
+.settingsIcon{
+	fill: #751430;
+	padding: 2.5px;
+}
+
+.settingsIcon:hover{
+	fill: orange;
+}

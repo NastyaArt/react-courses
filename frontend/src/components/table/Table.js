@@ -8,14 +8,12 @@ class Table extends Component {
         if (!this.props.rates) {
             return null;
         }
-        console.log(this.props.rates);
         return (
             <div className='table'>
                 <ReactDataGrid
                     columns={[{ key: "Date", name: "Date" }, { key: this.props.currency, name: this.props.currency }]}
                     rowGetter={this.rowGetter}
                     rowsCount={this.props.dates.length}
-                    minHeight={500}
                 />
             </div>
         );

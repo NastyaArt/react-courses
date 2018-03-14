@@ -1,5 +1,6 @@
 .date-range-picker *{
 	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .CalendarMonth_table .CalendarDay__selected_start{
