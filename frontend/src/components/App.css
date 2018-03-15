@@ -82,11 +82,18 @@ footer a:hover, footer a:focus{
 	background-color: #E0E0E0;
 }
 
-.table_container{
+.currency_table{
 	display: flex;
 	height: 100%;
 	width: 100%;
 	margin: 0 50px;
 	box-sizing: border-box;
 	overflow: hidden;
+}
+
+.table_container{
+	box-sizing: border-box;
+	margin: 0;
+	flex: 1 1 auto;
+	padding: 10px 0;
 }

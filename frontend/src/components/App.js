@@ -59,9 +59,11 @@ class App extends Component {
         } else {
             if (this.props.currentTab === "table") {
                 return (
-                    <div className="table_container">
+                    <div className="currency_table">
                         <Multiselect />
-                        <Table />
+                        <div className="table_container">
+                            <Table />
+                        </div>
                     </div>
                 );
             }

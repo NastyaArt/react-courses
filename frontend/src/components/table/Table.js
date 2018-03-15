@@ -14,6 +14,7 @@ class Table extends Component {
                     columns={[{ key: "Date", name: "Date" }, { key: this.props.currency, name: this.props.currency }]}
                     rowGetter={this.rowGetter}
                     rowsCount={this.props.dates.length}
+                    minHeight={480}
                 />
             </div>
         );
