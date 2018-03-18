@@ -18,21 +18,21 @@ const TIMEOUTS = {
 function getRates(currency, dateFrom, dateTo) {
     var code = CURRENCIES[currency];
     if (code == null) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             reject('Invalid currency ' + currency);
         })
     }
 
-    return new Promise(function(resolve) {
+    return new Promise(function (resolve) {
         // Just for sample slow down rates loading
         setTimeout(resolve, TIMEOUTS[currency]);
     })
-    .then(function() {
-        return fetch('http://www.nbrb.by/API/ExRates/Rates/Dynamics/' + code + '?startDate=' + dateFrom + '&endDate=' + dateTo)
-            .then(function(response) {
-                return response.json();
-            });
-    });
+        .then(function () {
+            return fetch('http://www.nbrb.by/API/ExRates/Rates/Dynamics/' + code + '?startDate=' + dateFrom + '&endDate=' + dateTo)
+                .then(function (response) {
+                    return response.json();
+                });
+        });
 }
 
 function getCurrencyRatesCSV(currencies, dateFrom, dateTo, clientId) {
@@ -41,48 +41,27 @@ function getCurrencyRatesCSV(currencies, dateFrom, dateTo, clientId) {
     sendProgress(clientId, done, total);
 
     var promises = [];
-    currencies.forEach(function(currency) {
-        promises.push(getRates(currency, dateFrom, dateTo).then(function(rates) {
+    currencies.forEach(function (currency) {
+        promises.push(getRates(currency, dateFrom, dateTo).then(function (rates) {
             done++;
             sendProgress(clientId, done, total);
-
             var data = {};
-            rates.forEach(function(rate) {
-                data[rate.Date.split('T')[0]] = rate.Cur_OfficialRate;
-            });
-            return data;
+            return rates.map(rate => ({ date: rate.Date.split('T')[0], cur: rate.Cur_OfficialRate }))
         }));
     });
 
-    return Promise.all(promises).then(function(results) {
+    return Promise.all(promises).then(function (results) {
         sendProgress(clientId, null, null);
 
         var csv = 'Date,' + currencies.join(',') + '\n';
-        var dates = generateDatesRange(dateFrom, dateTo);
-        dates.forEach(function(date) {
-            csv += date + ',' + results.map(function(result) {
-                    return result[date]
-                }).join(',') + '\n';
-        });
+
+        results[0].map((r, i) => {
+            csv += r.date + ',' + results.map(function (result) {
+                return result[i].cur;
+            }).join(',') + '\n';
+        })
         return csv;
     });
-}
-
-function generateDatesRange(dateFrom, dateTo) {
-    var from = moment(dateFrom);
-    var to = moment(dateTo);
-    if (to.diff(from) < 0) {
-        return new Promise(function(resolve, reject) {
-            reject('dateFrom cannot be after dateTo');
-        })
-    }
-
-    var range = [];
-    while (to.diff(from, 'days') >= 0) {
-        range.push(from.format('YYYY-MM-DD'));
-        from.add(1, 'days');
-    }
-    return range;
 }
 
 function sendProgress(clientId, done, total) {
