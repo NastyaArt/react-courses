@@ -64,9 +64,10 @@ footer{
 
 footer > div{
 	width: 70%;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 6fr 1fr;
 	align-items: center;
+	justify-content: center;
 }
 
 footer a, footer a:visited{
@@ -76,12 +77,23 @@ footer a, footer a:visited{
 	text-decoration: none;
 	height: 50px;
 	padding: 0 15px 0 10px;
+	grid-column-start: 3;
 }
 
 footer a:hover, footer a:focus{
 	background-color: #E0E0E0;
 }
 
+footer .drop_up{
+	grid-column-start: 1;
+}
+
+footer .date-range-picker{
+	grid-column-start: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .currency_table{
 	display: flex;
 	height: 100%;

@@ -5,39 +5,38 @@ import './Table.css';
 
 class Table extends Component {
     render() {
-        if (!this.props.rates) {
+        if (!this.props.selectedCurrencies || !this.props.rates) {
             return null;
         }
         return (
             <div className='table'>
                 <ReactDataGrid
-                    columns={[{ key: "Date", name: "Date" }, { key: this.props.currency, name: this.props.currency }]}
+                    columns={this.getColumns()}
                     rowGetter={this.rowGetter}
-                    rowsCount={this.props.dates.length}
-                    minHeight={480}
+                    rowsCount={this.props.rates.length}
+                    minHeight={470}
                 />
             </div>
         );
     }
 
-    componentDidMount() {
-        if (!this.props.rates) {
-            this.props.onLoad();
-        }
+    getColumns() {
+        return [
+            { key: "Date", name: "Date" },
+            ...this.props.selectedCurrencies.map(el => ({ key: el, name: el }))
+        ];
     }
 
     rowGetter = (i) => {
-        const rate = { "Date": this.props.dates[i], [this.props.currency]: this.props.rates[i] };
+        const rate = { ...this.props.rates[i] };
         return rate;
     }
 
 };
 
 Table.propTypes = {
-    currency: PropTypes.string.isRequired,
-    dates: PropTypes.arrayOf(PropTypes.string),
-    rates: PropTypes.arrayOf(PropTypes.number),
-    onLoad: PropTypes.func.isRequired
+    selectedCurrencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rates: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Table;

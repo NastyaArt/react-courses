@@ -21,7 +21,6 @@ class App extends Component {
                     <h2>Currency Exchange Rates</h2>
                 </header>
                 <nav>
-                    { /* Buttons to switch between chart and table views */}
                     <Tabs />
                 </nav>
                 <article>
@@ -32,7 +31,7 @@ class App extends Component {
                 </article>
                 <footer>
                     <div>
-                        <CurrencyDropUp />
+                        {this.renderDropUp()}
                         <RangeDatePicker />
                         <ExportButton />
                     </div>
@@ -52,23 +51,38 @@ class App extends Component {
         );
     }
 
+    renderDropUp() {
+        if (this.props.currentTab === "chart") {
+            return (
+                <CurrencyDropUp />
+            );
+        }
+        return null;
+    }
+
     renderArticle() {
         if (this.props.error) {
             console.log(this.props.error);
             return <div className="error">{this.props.error}</div>;
         } else {
-            if (this.props.currentTab === "table") {
-                return (
-                    <div className="currency_table">
-                        <Multiselect />
-                        <div className="table_container">
-                            <Table />
+            switch (this.props.currentTab) {
+                case "table":
+                    return (
+                        <div className="currency_table">
+                            <Multiselect />
+                            <div className="table_container">
+                                <Table />
+                            </div>
                         </div>
-                    </div>
-                );
-            }
-            else {
-                return <CurrencyChart />;
+                    );
+
+                case "chart":
+                    return (
+                        <CurrencyChart />
+                    );
+
+                default:
+                    return null;
             }
         }
     }

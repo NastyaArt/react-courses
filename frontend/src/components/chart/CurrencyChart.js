@@ -25,20 +25,12 @@ class CurrencyChart extends Component {
             </div>
         );
     }
-
-    // See https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/
-    componentDidMount() {
-        if (!this.props.rates) {
-            this.props.onLoad();
-        }
-    }
 }
 
 CurrencyChart.propTypes = {
     currency: PropTypes.string.isRequired,
     dates: PropTypes.arrayOf(PropTypes.string),
-    rates: PropTypes.arrayOf(PropTypes.number),
-    onLoad: PropTypes.func.isRequired
+    rates: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default CurrencyChart;

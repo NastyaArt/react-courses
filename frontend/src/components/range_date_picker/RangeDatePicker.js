@@ -36,6 +36,10 @@ class RangeDatePicker extends Component {
         });
     }
 
+    componentDidMount() {
+        this.props.onLoad();
+    }
+
     render() {
         return (
             <div className='date-range-picker'>

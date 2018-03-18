@@ -2,6 +2,8 @@ import { handleActions, createAction } from 'redux-actions';
 import { fetchCurrencyRates } from './rates';
 import moment from 'moment';
 
+const CURRENCIES = ['USD', 'EUR', 'RUB'];
+
 //- Actions
 export const selectCurrency = createAction('CURRENCY_SELECT');
 export const changeDate = createAction('DATE_CHANGE');
@@ -17,12 +19,12 @@ const initialState = {
 
 //- Epics
 export const filterEpic = (action$, store) => {
-    return action$.ofType('CURRENCY_SELECT', 'DATE_CHANGE')
+    return action$.ofType('DATE_CHANGE')
         .map(action => {
             let rangeDates = {
                 startDate: store.getState().filter.startDate,
                 endDate: store.getState().filter.endDate,
-                currencySymbol: store.getState().filter.selectedCurrency
+                currencies: CURRENCIES
             }
             return fetchCurrencyRates(rangeDates);
         });
